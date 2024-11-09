@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Prediction</title>
+    <link rel="stylesheet" href="{% static 'Home/styles/base.css' %}" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-100 text-gray-800">
+    <nav class="bg-red-600 p-4">
+      <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <div class="text-white font-bold text-xl">
+          <a href="{% url 'home' %}" class="hover:text-yellow-200">Foodify</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="py-6">
+      <div class="container mx-auto mt-6">
+        <h2 class="text-xl text-center mb-4">Upload Your Image</h2>
+        <form
+          action="{% url 'upload_image' %}"
+          method="POST"
+          enctype="multipart/form-data"
+          class="max-w-md mx-auto"
+        >
+          {% csrf_token %}
+          <div class="mb-4">
+            <label for="image" class="block text-sm font-medium text-gray-700"
+              >Choose Image</label
+            >
+            <input
+              type="file"
+              id="image"
+              name="image"
+              class="mt-2 p-2 border border-gray-300 rounded-lg w-full"
+            />
+          </div>
+          <button
+            type="submit"
+            class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
+          >
+            Upload Image
+          </button>
+        </form>
+      </div>
+      
+      {% if image_url %}
+      <div class="mt-4">
+        <img src="{{ image_url }}" alt="Uploaded Image" class="w-64 h-auto mx-auto rounded-lg border border-gray-300">
+      </div>
+      {% endif %}
+
+      <!-- Display Prediction Result -->
+      {% if flag %}
+      <div class="container mx-auto mt-6 text-center">
+        <h2 class="text-2xl font-semibold">
+          The Prediction is:
+          <span class="text-green-400 font-bold"> {{ prediction }} </span>
+        </h2>
+        <h3 class="text-lg">Probability: <span class="text-red-500 font-bold">
+        {{ probability|floatformat:2 }}%</h3>
+        </span>
+
+        <!-- Nutritional Information Table -->
+        <h4 class="text-lg mt-4 font-semibold">
+          Nutritional Information (per 100g):
+        </h4>
+        <div class="flex justify-center mt-4">
+          <table class="border border-gray-300 text-left">
+            <thead class="bg-gray-200">
+              <tr>
+                <th class="px-4 py-2 border border-gray-300">Nutrient</th>
+                <th class="px-4 py-2 border border-gray-300">Amount (g)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="px-4 py-2 border border-gray-300">Protein</td>
+                <td class="px-4 py-2 border border-gray-300">
+                  {{ nutrients.protein }}
+                </td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 border border-gray-300">Carbohydrates</td>
+                <td class="px-4 py-2 border border-gray-300">
+                  {{ nutrients.carbohydrates }}
+                </td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 border border-gray-300">Fat</td>
+                <td class="px-4 py-2 border border-gray-300">
+                  {{ nutrients.fat }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      {% endif %}
+    </main>
+  </body>
+</html>
