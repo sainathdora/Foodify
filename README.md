@@ -15,3 +15,6 @@ Python Version - 3.10.0
     Run the app, using <b>python manage.py runserver 8080</b>
   </li>
 </ul>
+<h1>Demo</h1>
+[![Watch the video](https://img.youtube.com/vi/qaBVxcowoEo/0.jpg)](https://youtu.be/qaBVxcowoEo)
+
