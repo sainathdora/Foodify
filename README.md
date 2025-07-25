@@ -17,3 +17,5 @@ Python Version - 3.10.0
 </ul>
 <h1>Demo</h1>
 <img src="https://github.com/user-attachments/assets/8a7c2473-93bb-4db7-99b4-1e528289bc6f" width="600"/>
+<h1>Training The Model - NoteBooks</h1>
+<a href = "https://colab.research.google.com/drive/19-vASdEVJZkxPGrq80CckM83-ctkEKkD?authuser=2#scrollTo=Ut-GM-HAbSTi">Model Training</a>
