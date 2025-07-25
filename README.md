@@ -16,5 +16,6 @@ Python Version - 3.10.0
   </li>
 </ul>
 <h1>Demo</h1>
-![Image](https://github.com/user-attachments/assets/8a7c2473-93bb-4db7-99b4-1e528289bc6f)
+![Demo GIF](https://github.com/user-attachments/assets/8a7c2473-93bb-4db7-99b4-1e528289bc6f)
+
 
